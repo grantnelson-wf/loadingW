@@ -1,0 +1,21 @@
+{
+  "name": "loadingW",
+  "version": "1.0.0",
+  "description": "A lighter weight version of the Workiva logo from the grantnelson-wf/webgl-fun project for use as a loading screen.",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grantnelson-wf/loadingW"
+  },
+  "author": "Grant Nelson",
+  "bugs": {
+    "url": "https://github.com/grantnelson-wf/loadingW/issues"
+  },
+  "homepage": "https://github.com/grantnelson-wf/loadingW/index.html",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-shell": ">=0.4.0"
+  }
+}

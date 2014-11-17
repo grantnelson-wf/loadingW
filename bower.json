@@ -1,0 +1,15 @@
+{
+    "name": "loadingW",
+    "version": "1.0.0",
+    "private": false,
+    "ignore": [
+        "bower_components",
+        "node_modules"
+        "index.html",
+        "init.sh",
+        "package.json"
+    ],
+    "dependencies": {
+        "requirejs": "2.1.8"
+    }
+}
