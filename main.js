@@ -4,10 +4,11 @@ require.config({
     }
 });
 
-require(['src/loadingW'],
-    function(LoadingW) {
-        var loadingW = new LoadingW();
-        loadingW.setup('loadingWTarget');
-        loadingW.show();
-        //loadingW.hide();
+require(['src/loadingW'], function(LoadingW) {
+
+    var loadingW = new LoadingW();
+    loadingW.setup('loadingWTarget');
+    loadingW.show();
+    //loadingW.hide();
+        
 });

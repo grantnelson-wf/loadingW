@@ -1,0 +1,16 @@
+#wrap {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+
+#content {
+    position: relative;
+    left: -200px;
+    top: -200px;
+}
+
+#loadingWTarget {
+    min-width: 400px;
+    min-height: 400px;
+}

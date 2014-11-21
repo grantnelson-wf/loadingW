@@ -4,7 +4,8 @@
     "private": false,
     "ignore": [
         "bower_components",
-        "node_modules"
+        "node_modules",
+        "Gruntfile.js",
         "index.html",
         "init.sh",
         "package.json"
