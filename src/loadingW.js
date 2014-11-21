@@ -551,12 +551,12 @@ define(function(require) {
 
     ///
     Shader.prototype.getPosAttrLoc = function() {
-        return this._posAttrLoc
+        return this._posAttrLoc;
     };
 
     ///
     Shader.prototype.getNormAttrLoc = function() {
-        return this._normAttrLoc
+        return this._normAttrLoc;
     };
 
     ///
@@ -603,7 +603,7 @@ define(function(require) {
     Shape.prototype.setAttrs = function(posAttrLoc, normAttrLoc) {
         this._posAttrLoc  = posAttrLoc;
         this._normAttrLoc = normAttrLoc;
-    }
+    };
 
     Shape.prototype.bind = function() {
         var stride = 6*Float32Array.BYTES_PER_ELEMENT;
@@ -613,13 +613,13 @@ define(function(require) {
         this._gl.enableVertexAttribArray(this._normAttrLoc);
         this._gl.vertexAttribPointer(this._posAttrLoc,  3, this._gl.FLOAT, false, stride, 0);
         this._gl.vertexAttribPointer(this._normAttrLoc, 3, this._gl.FLOAT, false, stride, offset);
-    }
+    };
 
     Shape.prototype.unbind = function() {
         this._gl.disableVertexAttribArray(this._posAttrLoc);
         this._gl.disableVertexAttribArray(this._normAttrLoc);
         this._gl.bindBuffer(this._gl.ARRAY_BUFFER, null);
-    }
+    };
 
     Shape.prototype.draw = function() {
         for (var i = this._indexObjs.length-1; i >= 0; i--) {
@@ -627,7 +627,7 @@ define(function(require) {
             this._gl.bindBuffer(this._gl.ELEMENT_ARRAY_BUFFER, indexObj.buffer);
             this._gl.drawElements(indexObj.type, indexObj.count, this._gl.UNSIGNED_SHORT, 0);
         }
-    }
+    };
 
     //======================================================================
 
@@ -665,7 +665,7 @@ define(function(require) {
         gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuf);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
 
-        var indexObjs = []
+        var indexObjs = [];
         for (var i = this.fans.length - 1; i >= 0; i--) {
             var indices = this.fans[i];
             var indexBuf  = gl.createBuffer();
@@ -679,15 +679,15 @@ define(function(require) {
         }
 
         return new Shape(gl, vertexBuf, indexObjs);
-    }
+    };
 
     ShapeBuilder.prototype._closeTriFan = function() {
         if (this.currentFan.length < 3) {
             throw 'Error: Must have at least 3 indices in the triangle fan.';
         }
         this.fans.push(this.currentFan);
-        this.currentFan = []
-    }
+        this.currentFan = [];
+    };
 
     /**
      * Adds a vertex to the shape.
@@ -866,7 +866,7 @@ define(function(require) {
      */
     Graphics3D.prototype.render = function() {
         this._gl.clear(this._gl.COLOR_BUFFER_BIT|this._gl.DEPTH_BUFFER_BIT);
-        var mat = this._mover.getMatrix()
+        var mat = this._mover.getMatrix();
 
         var shadowMat = Matrix.scale(Matrix.mul(mat, Matrix.translate(0.1, -0.1, 0.0)), 1.6, 1.6, 0.0, 1.0);
         this._shader.setObjectMatrix(shadowMat);
@@ -945,7 +945,7 @@ define(function(require) {
         if (gl) {
             this._graphics = new Graphics3D();
             if (!this._graphics.setup(gl)) {
-                console.log('Failed to setup graphics.')
+                console.log('Failed to setup graphics.');
                 return false;
             }
         } else {
@@ -994,7 +994,7 @@ define(function(require) {
         if ((this._canvas.width !== width) || (this._canvas.height !== height)) {
             this._canvas.width  = width;
             this._canvas.height = height;
-            if (this._graphics != null) {
+            if (this._graphics !== null) {
                 this._graphics.resize(width, height);
             }
         }
