@@ -761,7 +761,7 @@ define(function(require) {
     /**
      * The wobble mover rotates at a rate with a cosine multiplier.
      */
-    function Wobble() {
+    function Mover() {
         
         this.yawSpeed = 0.6; // The yaw speed in radians.
         this.pitchSpeed = 0.8; //The pitch speed in radians.
@@ -789,7 +789,7 @@ define(function(require) {
     /**
      * Updates the mover.
      */
-    Wobble.prototype.getMatrix = function() {
+    Mover.prototype.getMatrix = function() {
         var curTime = (new Date()).getTime();
         var dt = (curTime - this.startTime)/1000;
         var yaw   = Math.cos(dt*this.yawSpeed   + this.yawOffset)  *this.deltaYaw   + this.initYaw;
@@ -836,7 +836,7 @@ define(function(require) {
         this._shape.setAttrs(this._shader.getPosAttrLoc(), this._shader.getNormAttrLoc());
         this._shape.bind();
 
-        this._mover = new Wobble();
+        this._mover = new Mover();
 
         this._gl.clearColor(0.0, 0.0, 0.0, 0.0);
         this._gl.clearDepth(1.0);
@@ -868,10 +868,10 @@ define(function(require) {
         this._gl.clear(this._gl.COLOR_BUFFER_BIT|this._gl.DEPTH_BUFFER_BIT);
         var mat = this._mover.getMatrix()
 
-        var shadowMat = Matrix.scale(Matrix.mul(mat, Matrix.translate(0.1, -0.1, 0.0)), 1.5, 1.5, 0.0, 1.0);
+        var shadowMat = Matrix.scale(Matrix.mul(mat, Matrix.translate(0.1, -0.1, 0.0)), 1.6, 1.6, 0.0, 1.0);
         this._shader.setObjectMatrix(shadowMat);
-        this._shader.setLightColor(0.0, 0.0, 0.0, 0.1);
-        this._shader.setDarkColor(0.0, 0.0, 0.0, 0.1);
+        this._shader.setLightColor(0.01, 0.02, 0.0, 0.17);
+        this._shader.setDarkColor(0.01, 0.02, 0.0, 0.17);
         this._shape.draw();
 
         var shapeMat = Matrix.mul(mat, Matrix.translate(0.0, 0.0, -1.0));
